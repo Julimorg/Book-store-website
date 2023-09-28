@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BookStore" Class="dbBookStoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Book" Member="Books">
+    <Type Name="Book">
+      <Column Name="book_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="publisher_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="book_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="update_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="quantity_instock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Publisher_Book" Member="Publisher" ThisKey="publisher_id" OtherKey="publisher_id" Type="Publisher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Publisher" Member="Publishers">
+    <Type Name="Publisher">
+      <Column Name="publisher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="publisher_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Publisher_Book" Member="Books" ThisKey="publisher_id" OtherKey="publisher_id" Type="Book" />
+    </Type>
+  </Table>
+</Database>
